@@ -1,8 +1,6 @@
+import Notiflix from 'notiflix';
 const formEl = document.querySelector('form');
 formEl.addEventListener('submit', submitForm);
-// let delayEl = 0;
-// let stepEl = 0;
-// let amountEl = 0;
 
 function submitForm(event) {
   event.preventDefault();
@@ -26,53 +24,24 @@ function submitForm(event) {
   }, delay.value);
   
 }
-//  createPromise(2, 2);
 
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
   const promise = new Promise((resolve, reject) => {
     if (shouldResolve) {
-    resolve(`✅ Fulfilled promise ${position} in ${delay}ms`)
+    resolve(Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`))
   } else {
-    reject(`❌ Rejected promise ${position} in ${delay}ms`)
+    reject(Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`))
   }
   })
   
 
   promise
-  .then(value => {
-    console.log(value);
+    .then(value => {
+    value;
   })
   .catch(error => {
-    console.log(error);
+    error;
   })
   
 }
-
-
-// setTimeout(() => {
-  
-// },)
-// let steps = 0;
-// const intervalId = setInterval(() => {
-//   if (steps = 5) {
-    
-//   }
-//   console.log('Hello');
-// })
-
-
-// const fetchPokemonById = id => {
-//   return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-//     .then(r => r.json());  
-// }
-// fetchPokemonById(2000).then(onFetchSuccess).catch(onFetchError);
-
-// function onFetchSuccess(pokemon) {
-//   console.log(pokemon);
-//   console.log(pokemon.species.name);
-// };
-// function onFetchError(error) {
-//   console.log('Це у блоці catch');
-//   console.log(error);
-// }
